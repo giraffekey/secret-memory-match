@@ -60,6 +60,13 @@ pub fn try_start_match<S: Storage, A: Api, Q: Querier>(
 ) -> StdResult<HandleResponse> {
     let sender = deps.api.canonical_address(&env.message.sender)?;
 
+    if rows * cols % 2 == 1 {
+        return Err(StdError::GenericErr {
+            msg: "Invalid rows and cols.".to_string(),
+            backtrace: None,
+        });
+    }
+
     storage_random(&mut deps.storage).update(|mut random| {
         random.input_entropy(entropy, env.message.sender, env.block.height);
         Ok(random)
