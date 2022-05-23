@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HandleMsg",
+  "anyOf": [
+    {
+      "type": "object",
+      "required": [
+        "start_match"
+      ],
+      "properties": {
+        "start_match": {
+          "type": "object",
+          "required": [
+            "cols",
+            "entropy",
+            "rows"
+          ],
+          "properties": {
+            "cols": {
+              "type": "integer",
+              "format": "uint32",
+              "minimum": 0.0
+            },
+            "entropy": {
+              "type": "integer",
+              "format": "uint64",
+              "minimum": 0.0
+            },
+            "rows": {
+              "type": "integer",
+              "format": "uint32",
+              "minimum": 0.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "reveal_card"
+      ],
+      "properties": {
+        "reveal_card": {
+          "type": "object",
+          "required": [
+            "entropy",
+            "match_id",
+            "pos"
+          ],
+          "properties": {
+            "entropy": {
+              "type": "integer",
+              "format": "uint64",
+              "minimum": 0.0
+            },
+            "match_id": {
+              "type": "string"
+            },
+            "pos": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "integer",
+                  "format": "uint32",
+                  "minimum": 0.0
+                },
+                {
+                  "type": "integer",
+                  "format": "uint32",
+                  "minimum": 0.0
+                }
+              ],
+              "maxItems": 2,
+              "minItems": 2
+            }
+          }
+        }
+      }
+    }
+  ]
+}

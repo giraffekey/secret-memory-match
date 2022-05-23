@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Match",
+  "type": "object",
+  "required": [
+    "attempts",
+    "cards",
+    "player",
+    "size"
+  ],
+  "properties": {
+    "attempts": {
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Card"
+        }
+      }
+    },
+    "last_reveal": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": [
+        {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        }
+      ],
+      "maxItems": 2,
+      "minItems": 2
+    },
+    "player": {
+      "$ref": "#/definitions/CanonicalAddr"
+    },
+    "size": {
+      "type": "array",
+      "items": [
+        {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        }
+      ],
+      "maxItems": 2,
+      "minItems": 2
+    }
+  },
+  "definitions": {
+    "Binary": {
+      "description": "Binary is a wrapper around Vec<u8> to add base64 de/serialization with serde. It also adds some helper methods to help encode inline.\n\nThis is only needed as serde-json-{core,wasm} has a horrible encoding for Vec<u8>",
+      "type": "string"
+    },
+    "CanonicalAddr": {
+      "$ref": "#/definitions/Binary"
+    },
+    "Card": {
+      "type": "object",
+      "required": [
+        "color",
+        "is_revealed",
+        "shape"
+      ],
+      "properties": {
+        "color": {
+          "$ref": "#/definitions/Color"
+        },
+        "is_revealed": {
+          "type": "boolean"
+        },
+        "shape": {
+          "$ref": "#/definitions/Shape"
+        }
+      }
+    },
+    "Color": {
+      "type": "string",
+      "enum": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green",
+        "Orange",
+        "Brown",
+        "Gray",
+        "Black"
+      ]
+    },
+    "Shape": {
+      "type": "string",
+      "enum": [
+        "Triangle",
+        "Square",
+        "Circle",
+        "Diamond",
+        "Trapezoid",
+        "Oval",
+        "Pentagon",
+        "Hexagon",
+        "Octagon"
+      ]
+    }
+  }
+}

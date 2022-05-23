@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Shape",
+  "type": "string",
+  "enum": [
+    "Triangle",
+    "Square",
+    "Circle",
+    "Diamond",
+    "Trapezoid",
+    "Oval",
+    "Pentagon",
+    "Hexagon",
+    "Octagon"
+  ]
+}

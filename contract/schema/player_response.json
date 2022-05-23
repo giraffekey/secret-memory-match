@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PlayerResponse",
+  "type": "object",
+  "required": [
+    "matches"
+  ],
+  "properties": {
+    "matches": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+[package]
+name = "memory-match-contract"
+version = "0.1.0"
+edition = "2021"
+authors = ["giraffekey <giraffekey@tutanota.com>"]
+
+exclude = [
+  "contract.wasm",
+  "hash.txt",
+]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
+panic = "abort"
+incremental = false
+overflow-checks = true
+
+[features]
+default = []
+backtraces = ["cosmwasm-std/backtraces"]
+debug-print = ["cosmwasm-std/debug-print"]
+
+[dependencies]
+cosmwasm-std = { version = "0.10", package = "secret-cosmwasm-std" }
+cosmwasm-storage = { version = "0.10", package = "secret-cosmwasm-storage" }
+getrandom = { version = "0.2", features = ["custom"] }
+rand = "0.8"
+rand_chacha = "0.3"
+# secret-toolkit = "0.2.0" # Uncomment this for extra tools
+serde = { version = "1.0.103", default-features = false, features = ["derive"] }
+schemars = "0.7"
+sha2 = "0.10"
+snafu = "0.6.3"
+uuid = { version = "1", features = ["v4"] }
+
+[dev-dependencies]
+cosmwasm-schema = "0.10.1"

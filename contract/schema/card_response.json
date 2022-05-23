@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CardResponse",
+  "type": "object",
+  "required": [
+    "color",
+    "pos",
+    "shape"
+  ],
+  "properties": {
+    "color": {
+      "$ref": "#/definitions/Color"
+    },
+    "pos": {
+      "type": "array",
+      "items": [
+        {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        }
+      ],
+      "maxItems": 2,
+      "minItems": 2
+    },
+    "shape": {
+      "$ref": "#/definitions/Shape"
+    }
+  },
+  "definitions": {
+    "Color": {
+      "type": "string",
+      "enum": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green",
+        "Orange",
+        "Brown",
+        "Gray",
+        "Black"
+      ]
+    },
+    "Shape": {
+      "type": "string",
+      "enum": [
+        "Triangle",
+        "Square",
+        "Circle",
+        "Diamond",
+        "Trapezoid",
+        "Oval",
+        "Pentagon",
+        "Hexagon",
+        "Octagon"
+      ]
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Card",
+  "type": "object",
+  "required": [
+    "color",
+    "is_revealed",
+    "shape"
+  ],
+  "properties": {
+    "color": {
+      "$ref": "#/definitions/Color"
+    },
+    "is_revealed": {
+      "type": "boolean"
+    },
+    "shape": {
+      "$ref": "#/definitions/Shape"
+    }
+  },
+  "definitions": {
+    "Color": {
+      "type": "string",
+      "enum": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green",
+        "Orange",
+        "Brown",
+        "Gray",
+        "Black"
+      ]
+    },
+    "Shape": {
+      "type": "string",
+      "enum": [
+        "Triangle",
+        "Square",
+        "Circle",
+        "Diamond",
+        "Trapezoid",
+        "Oval",
+        "Pentagon",
+        "Hexagon",
+        "Octagon"
+      ]
+    }
+  }
+}
